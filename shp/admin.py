@@ -12,13 +12,11 @@ class MyTabularInline(admin.TabularInline):
 
 
 class ItemInline(MyTabularInline):
-    fields = ['name']
     model = Item
     extra = 5
 
 
 class CategoryAdmin(MyModelAdmin):
-    fields = ['name']
     inlines = [ItemInline]
 
 

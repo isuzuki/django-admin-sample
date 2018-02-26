@@ -30,7 +30,12 @@ class Item(HasTimestampModel, SoftDeletionModel):
 
 
 class Category(HasTimestampModel, SoftDeletionModel):
+    CATEGORY_CHOICES = (
+        ('game', 'ゲーム'),
+        ('fashion', 'ファッション'),
+    )
     name = models.CharField(max_length=255)
+    type = models.CharField(max_length=255, blank=True, null=True, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.name
