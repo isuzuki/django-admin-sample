@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django_mysql.models import ListTextField
 
 
 class HasTimestampModel(models.Model):
@@ -36,6 +37,7 @@ class Category(HasTimestampModel, SoftDeletionModel):
     )
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255, blank=True, null=True, choices=CATEGORY_CHOICES)
+    labels = ListTextField(base_field=models.CharField(max_length=10), blank=True, null=True)
 
     def __str__(self):
         return self.name
